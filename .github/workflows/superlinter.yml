@@ -13,7 +13,7 @@ jobs:
           # secret
           if [ "$SECRET_TEST" == "secret" ]
           then
-            echo Got Secret
+            echo Secret is "secret"
           fi
         env:
           SECRET_TEST: ${{ secrets.SECRET_TEST }}
