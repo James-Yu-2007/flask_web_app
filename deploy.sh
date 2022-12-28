@@ -5,38 +5,23 @@ then
     exit 1
 fi
 
-apt install python3-pip
+apt install python3-pip && pip3 install flask && pip3 install flask-login && pip3 install flask-sqlalchemy
 if [ $? -ne 0 ]
 then 
-    echo "FATAL: pip downloaded unsuccessfully"
+    echo "FATAL: packages downloaded unsuccessfully"
     exit 2
 fi
 
-pip3 install flask
+export DB_PATH=/database/database.db
 if [ $? -ne 0 ]
 then 
-    echo "FATAL: flask downloaded unsuccessfully"
+    echo "FATAL: environment variable exported unsuccessfully"
     exit 3
 fi
 
-pip3 install flask-login
+wget -p /website https://github.com/James-Yu-2007/flask_web_app/archive/refs/tags/v1.0.zip && unzip /website/v1.0.zip && rm /website/v1.0.zip && nohup python3 /website/flask_web_app-1.0/main.py > /var/log/website/console.log
 if [ $? -ne 0 ]
 then 
-    echo "FATAL: flask-login downloaded unsuccessfully"
+    echo "FATAL: deployed unsuccessfully"
     exit 4
 fi
-
-pip3 install flask-sqlalchemy
-if [ $? -ne 0 ]
-then 
-    echo "FATAL: flask-sqlalchemy downloaded unsuccessfully"
-    exit 5
-fi
-
-export DB_PATH=/database/database.db
-
-wget -p /website https://github.com/James-Yu-2007/flask_web_app/archive/refs/tags/v1.0.zip
-unzip /website/v1.0.zip
-rm /website/v1.0.zip
-
-nohup python3 /website/flask_web_app-1.0/main.py > /var/log/website/console.log
