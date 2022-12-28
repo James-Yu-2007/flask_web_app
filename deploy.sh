@@ -5,7 +5,7 @@ then
     exit 1
 fi
 
-apt install pip3
+apt install python3-pip
 if [ $? -ne 0 ]
 then 
     echo "FATAL: pip downloaded unsuccessfully"
@@ -39,4 +39,4 @@ wget -p /website https://github.com/James-Yu-2007/flask_web_app/archive/refs/tag
 unzip /website/v1.0.zip
 rm /website/v1.0.zip
 
-nohub python3 /website/flask_web_app-1.0/main.py > /var/log/website/console.log
+nohup python3 /website/flask_web_app-1.0/main.py > /var/log/website/console.log
