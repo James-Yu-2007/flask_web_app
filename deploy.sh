@@ -13,15 +13,10 @@ then
 fi
 
 export DB_PATH=/database/database.db
-if [ $? -ne 0 ]
-then 
-    echo "FATAL: environment variable exported unsuccessfully"
-    exit 3
-fi
 
 wget -p /website https://github.com/James-Yu-2007/flask_web_app/archive/refs/tags/v1.0.zip && unzip /website/v1.0.zip && rm /website/v1.0.zip && nohup python3 /website/flask_web_app-1.0/main.py > /var/log/website/console.log
 if [ $? -ne 0 ]
 then 
     echo "FATAL: deployed unsuccessfully"
-    exit 4
+    exit 3
 fi
