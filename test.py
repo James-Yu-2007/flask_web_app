@@ -1,8 +1,4 @@
-from website import create_app
 import socket
-
-app = create_app()
-
 def get_ip():
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     s.settimeout(0)
@@ -14,8 +10,4 @@ def get_ip():
     finally:
         s.close()
     return IP
-
-if __name__ == '__main__':
-    ip = get_ip()
-    app.run(host=ip, debug=True)
-print(ip)
+print(get_ip())
