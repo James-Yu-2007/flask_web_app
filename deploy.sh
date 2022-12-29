@@ -37,7 +37,7 @@ fi
 
 export DB_PATH=/database/database.db
 
-wget -P /website https://github.com/James-Yu-2007/flask_web_app/archive/refs/tags/v1.3.zip && cd website && unzip /website/v1.3.zip && rm /website/v1.2.zip && nohup python3 /website/flask_web_app-1.3/main.py > /var/log/website/console.log &
+wget -P /website https://github.com/James-Yu-2007/flask_web_app/archive/refs/tags/v1.3.zip && cd website && unzip /website/v1.3.zip && rm /website/v1.3.zip && nohup python3 /website/flask_web_app-1.3/main.py > /var/log/website/console.log &
 if [ $? -ne 0 ]
 then
     echo "FATAL: website published unsuccessfully"
