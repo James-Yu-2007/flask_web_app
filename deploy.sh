@@ -37,10 +37,10 @@ fi
 
 export DB_PATH=/database/database.db
 
-wget -p /website https://github.com/James-Yu-2007/flask_web_app/archive/refs/tags/v1.0.zip && unzip /website/v1.0.zip && rm /website/v1.0.zip && nohup python3 /website/flask_web_app-1.0/main.py > /var/log/website/console.log
+wget -P /website https://github.com/James-Yu-2007/flask_web_app/archive/refs/tags/v1.2.zip && cd website && unzip /website/v1.2.zip && rm /website/v1.2.zip && nohup python3 /website/flask_web_app-1.2/main.py > /var/log/website/console.logif [ $? -ne 0 ]
 if [ $? -ne 0 ]
 then
-    echo "FATAL: packages downloaded unsuccessfully"
+    echo "FATAL: website published unsuccessfully"
     exit 5
 fi
 echo SUCCESS
