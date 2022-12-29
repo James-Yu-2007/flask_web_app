@@ -1,8 +1,31 @@
-mkdir /database && mkdir /website && mkdir /var/log/website
-if [ $? -ne 0 ]
+if [ -ne "$/website" ]
 then
-    echo "FATAL: directories created unsuccessfully"
-    exit 1
+    mkdir /website
+    if [ $? -ne 0 ]
+    then
+        echo "FATAL: /website created unsuccessfully"
+        exit 1
+    fi
+fi
+
+if [ -ne "$/database" ]
+then
+    mkdir /database
+    if [ $? -ne 0 ]
+    then
+        echo "FATAL: /database created unsuccessfully"
+        exit 1
+    fi
+fi
+
+if [ -ne "$/var/log/website" ]
+then
+    mkdir /var/log/website
+    if [ $? -ne 0 ]
+    then
+        echo "FATAL: /var/log/website created unsuccessfully"
+        exit 1
+    fi
 fi
 
 yes | apt install python3-pip && pip3 install flask && pip3 install flask-logi>
