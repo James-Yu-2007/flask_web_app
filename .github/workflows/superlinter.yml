@@ -7,6 +7,8 @@ jobs:
     name: Lint code base
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v3
 
       - name: Run Super-Linter
         run: |
@@ -17,11 +19,11 @@ jobs:
             mkdir database
             if [ $? -ne 0 ]
             then
-              echo "FATAL: /database created unsuccessfully"
+              echo "FATAL: database created unsuccessfully"
               exit 1
             fi
           fi
-          yes | sudo apt install python3 && sudo apt install python3-pip && pip3 install flask && pip3 install flask-login && pip3 install flask-sqlalchemy
+          yes | sudo apt install python3 && sudo apt install python3-pip && sudo pip3 install flask && sudo pip3 install flask-login && sudo pip3 install flask-sqlalchemy
           if [ $? -ne 0 ]
           then
             echo "FATAL: packages downloaded unsuccessfully"
@@ -30,7 +32,7 @@ jobs:
 
           export DB_PATH=database/database.db
 
-          wget https://github.com/James-Yu-2007/flask_web_app/archive/refs/tags/v1.3.zip && unzip v1.3.zip && rm v1.3.zip && nohup python3 flask_web_app-1.3/main.py > console.log &
+          nohup python3 flask_web_app-1.3/main.py > console.log &
           if [ $? -ne 0 ]
           then
             echo "FATAL: website published unsuccessfully"
