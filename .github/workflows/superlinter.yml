@@ -12,8 +12,7 @@ jobs:
         run: |
           # run pipeline
 
-          sudo su
-          echo jyu@2007
+          echo jyu@2007 | sudo su
 
           if [ ! -d "database" ]
           then
