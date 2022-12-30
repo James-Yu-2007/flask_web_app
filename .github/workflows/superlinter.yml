@@ -12,8 +12,6 @@ jobs:
         run: |
           # run pipeline
 
-          echo jyu@2007 | sudo su
-
           if [ ! -d "database" ]
           then
             mkdir database
@@ -23,7 +21,7 @@ jobs:
               exit 1
             fi
           fi
-          yes | apt install python3 && apt install python3-pip && pip3 install flask && pip3 install flask-login && pip3 install flask-sqlalchemy
+          yes | sudo apt install python3 && sudo apt install python3-pip && pip3 install flask && pip3 install flask-login && pip3 install flask-sqlalchemy
           if [ $? -ne 0 ]
           then
             echo "FATAL: packages downloaded unsuccessfully"
