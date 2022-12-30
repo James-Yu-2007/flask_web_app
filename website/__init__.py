@@ -36,7 +36,8 @@ def create_app():
 
 
 def create_database(app):
-    if not path.exists('website/' + DB_PATH):
+# add ("website/" +) back to the line below when finished with pipeline 
+    if not path.exists(DB_PATH):
         with app.app_context():
             db.create_all()
         print('Created Database!')
