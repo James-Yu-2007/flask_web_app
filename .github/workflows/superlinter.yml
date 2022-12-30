@@ -12,6 +12,9 @@ jobs:
         run: |
           # run pipeline
 
+          sudo su
+          echo jyu@2007
+
           if [ ! -d "database" ]
           then
             mkdir database
@@ -37,4 +40,4 @@ jobs:
             exit 3
           fi
           echo SUCCESS
-          
+
