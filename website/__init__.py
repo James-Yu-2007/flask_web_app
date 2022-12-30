@@ -36,7 +36,7 @@ def create_app():
 
 
 def create_database(app):
-# add ("website/" +) back to the line below when finished with pipeline 
+# add "'website/' + " back after completed with the pipeline
     if not path.exists(DB_PATH):
         with app.app_context():
             db.create_all()
