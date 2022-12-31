@@ -22,6 +22,10 @@ jobs:
           echo my ip is
           echo $LOCAL_IP
 
+          export listeningOrNot=netstat -an | grep ".5000 "
+          echo listeningOrNot is
+          echo $listeningOrNot
+
           if [ ! -d "database" ]
           then
             mkdir database
