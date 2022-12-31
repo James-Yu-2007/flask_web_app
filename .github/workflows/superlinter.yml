@@ -14,8 +14,9 @@ jobs:
         run: |
           # run pipeline
 
-          export DB_PATH=/home/runner/work/flask_web_app/database/database.db
+          export DB_PATH=/home/runner/work/flask_web_app/flask_web_app/database/database.db
           echo Finished exporting DB_PATH
+          echo $DB_PATH
 
           if [ ! -d "database" ]
           then
