@@ -22,7 +22,7 @@ jobs:
           echo my ip is
           echo $LOCAL_IP
 
-          export listeningOrNot=netstat -an | grep ".5000 "
+          export listeningOrNot=$(netstat -an | grep ".5000 ")
           echo listeningOrNot is
           echo $listeningOrNot
 
