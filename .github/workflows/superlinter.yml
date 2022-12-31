@@ -33,7 +33,7 @@ jobs:
           export DB_PATH=database/database.db
           echo Finished exporting DB_PATH
 
-          nohup python3 flask_web_app-1.3/main.py > console.log &
+          nohup python3 /home/runner/work/flask_web_app-1.3/main.py > console.log &
           if [ $? -ne 0 ]
           then
             echo $DB_PATH
