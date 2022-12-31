@@ -55,5 +55,6 @@ jobs:
             if [ i == LISTEN ]
             then
               echo the 5000 port is listening
+            fi
           done
 
