@@ -22,10 +22,6 @@ jobs:
           echo my ip is
           echo $LOCAL_IP
 
-          export listeningOrNot=$(netstat -an | grep ".5000 ")
-          echo listeningOrNot is
-          echo $listeningOrNot
-
           if [ ! -d "database" ]
           then
             mkdir database
@@ -51,4 +47,13 @@ jobs:
           echo SUCCESS
           ls
           pwd
+
+          listeningOrNot=$(netstat -an | grep ".5000 ")
+          IFS=' ' read -ra my_array <<< "$listeningOrNot"
+          for i in "${my_array[@]}"
+          do
+            if [ i == LISTEN ]
+            then
+              echo the 5000 port is listening
+          done
 
