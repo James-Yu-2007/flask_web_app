@@ -33,6 +33,8 @@ jobs:
           export DB_PATH=database/database.db
           echo Finished exporting DB_PATH
 
+          ls
+          pwd
           nohup python3 flask_web_app/main.py > console.log &
           if [ $? -ne 0 ]
           then
@@ -40,5 +42,4 @@ jobs:
             exit 3
           fi
           echo SUCCESS
-          cat console.log
 
