@@ -39,6 +39,7 @@ jobs:
             echo FATAL: application runned unsuccessfully
             exit 3
           fi
+          cd ..
           echo SUCCESS
           ls
           pwd
