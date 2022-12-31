@@ -14,7 +14,8 @@ jobs:
         run: |
           # run pipeline
 
-          rm -r /home/runner/work/flask_web_app
+          export DB_PATH=database/database.db
+          echo Finished exporting DB_PATH
 
           if [ ! -d "database" ]
           then
@@ -31,9 +32,6 @@ jobs:
             echo "FATAL: packages downloaded unsuccessfully"
             exit 2
           fi
-
-          export DB_PATH=database/database.db
-          echo Finished exporting DB_PATH
 
           nohup python3 main.py > console.log &
           if [ $? -ne 0 ]
