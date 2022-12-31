@@ -14,12 +14,12 @@ jobs:
         run: |
           # run pipeline
 
-          export DB_PATH=database/database.db
+          export DB_PATH=/home/runner/work/flask_web_app/database/database.db
           echo Finished exporting DB_PATH
 
-          if [ ! -d "/home/runner/work/database" ]
+          if [ ! -d "database" ]
           then
-            mkdir /home/runner/work/database
+            mkdir database
             if [ $? -ne 0 ]
             then
               echo "FATAL: database created unsuccessfully"
@@ -39,7 +39,6 @@ jobs:
             echo FATAL: application runned unsuccessfully
             exit 3
           fi
-          cd..
           echo SUCCESS
           ls
           pwd
