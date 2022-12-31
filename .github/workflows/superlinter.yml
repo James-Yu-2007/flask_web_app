@@ -14,6 +14,8 @@ jobs:
         run: |
           # run pipeline
 
+          rm -r /home/runner/work/flask_web_app
+
           if [ ! -d "database" ]
           then
             mkdir database
