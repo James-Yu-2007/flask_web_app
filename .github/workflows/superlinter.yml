@@ -33,13 +33,13 @@ jobs:
           export DB_PATH=database/database.db
           echo Finished exporting DB_PATH
 
-          ls
-          pwd
           nohup python3 main.py > console.log &
           if [ $? -ne 0 ]
           then
-            echo $DB_PATH
+            echo FATAL: application runned unsuccessfully
             exit 3
           fi
           echo SUCCESS
+          ls
+          pwd
 
