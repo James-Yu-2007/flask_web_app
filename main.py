@@ -11,7 +11,7 @@ LOCAL_IP = LOCAL_IP.split()
 if __name__ == '__main__':
     app.run(host=LOCAL_IP[0], debug=True)
 
-time.sleep(10)
+time.sleep(15)
 listeningOrNot = os.environ['listeningOrNot']
 listeningOrNot = listeningOrNot.split()
 def listen():
@@ -20,3 +20,5 @@ def listen():
             return True
 if listen():
     print("the 5000 port is listening")
+else:
+    print("the 5000 port is not listening")
