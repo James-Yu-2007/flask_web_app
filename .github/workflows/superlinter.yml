@@ -50,6 +50,8 @@ jobs:
 
           sleep 5
           echo check for listening
-          export listeningOrNot=`netstat -an | grep ".5000 "`
           netstat -an | grep ".5000 "
-
+          if [ $? -eq 0 ]
+            then
+              echo the 5000 port is listening
+            fi
