@@ -14,10 +14,13 @@ if __name__ == '__main__':
 time.sleep(15)
 listeningOrNot = os.environ['listeningOrNot']
 listeningOrNot = listeningOrNot.split()
+
 def listen():
     for i in listeningOrNot:
         if i == "LISTEN":
             return True
+    return False
+
 if listen():
     print("the 5000 port is listening")
 else:
