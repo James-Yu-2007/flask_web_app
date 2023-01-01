@@ -58,3 +58,5 @@ jobs:
             fi
 
           ps
+          pkill -9 -f python3
+          ps
