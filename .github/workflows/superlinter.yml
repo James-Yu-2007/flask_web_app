@@ -48,6 +48,7 @@ jobs:
           ls
           pwd
 
+          sleep 10
           echo check for listening
           echo `netstat -an|grep ".5000 "`
           echo finished check for listening
