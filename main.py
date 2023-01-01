@@ -11,7 +11,7 @@ LOCAL_IP = LOCAL_IP.split()
 if __name__ == '__main__':
     app.run(host=LOCAL_IP[0], debug=True)
 
-time.sleep(15)
+time.sleep(30)
 listeningOrNot = os.environ['listeningOrNot']
 listeningOrNot = listeningOrNot.split()
 
