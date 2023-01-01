@@ -49,8 +49,8 @@ jobs:
           pwd
 
           echo check for listening
-          echo (netstat -an)
           echo `netstat -an|grep ".5000 "`
+          echo finished check for listening
           # listeningOrNot=$(netstat -an | grep ".5000 ")
           # echo $listeningOrNot
           # IFS=' ' read -ra my_array <<< "$listeningOrNot"
