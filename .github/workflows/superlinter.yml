@@ -57,3 +57,12 @@ jobs:
             fi
 
           ps
+
+          if [ "$1" == "" ]; then
+            echo "Usage: $0 process-name"
+            exit 4
+          fi
+          
+          ps augx | grep "$1" | awk '{print $2}' | xargs kill
+
+          ps
