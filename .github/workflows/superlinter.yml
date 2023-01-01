@@ -13,6 +13,7 @@ jobs:
       - name: Run Super-Linter
         run: |
           # run pipeline
+          ps
 
           export DB_PATH=/home/runner/work/flask_web_app/flask_web_app/database/database.db
           echo Finished exporting DB_PATH
@@ -55,14 +56,5 @@ jobs:
             then
               echo the 5000 port is listening
             fi
-
-          ps
-
-          if [ "$1" == "" ]; then
-            echo "Usage: $0 process-name"
-            exit 4
-          fi
-          
-          ps augx | grep "$1" | awk '{print $2}' | xargs kill
 
           ps
