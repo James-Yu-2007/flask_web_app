@@ -56,6 +56,4 @@ jobs:
               echo the 5000 port is listening
             fi
 
-          echo `grep "tcp"`
-          
-          ps augx | grep ".5000 " | awk '{print $2}' | xargs kill
+          ps augx | grep "tcp" | awk '{print $2}' | xargs kill
