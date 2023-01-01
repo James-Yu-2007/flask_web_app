@@ -48,18 +48,16 @@ jobs:
           ls
           pwd
 
-          sleep 10
+          sleep 5
           echo check for listening
-          echo `netstat -an|grep ".5000 "`
-          echo finished check for listening
-          # listeningOrNot=$(netstat -an | grep ".5000 ")
-          # echo $listeningOrNot
-          # IFS=' ' read -ra my_array <<< "$listeningOrNot"
-          # for i in "${my_array[@]}"
-          # do
-          #   if [ i == LISTEN ]
-          #   then
-          #     echo the 5000 port is listening
-          #   fi
-          # done
+          listeningOrNot=`netstat -an | grep ".5000 "`
+          echo $listeningOrNot
+          IFS=' ' read -ra my_array <<< "$listeningOrNot"
+          for i in "${my_array[@]}"
+          do
+            if [ i == LISTEN ]
+            then
+              echo the 5000 port is listening
+            fi
+          done
 
