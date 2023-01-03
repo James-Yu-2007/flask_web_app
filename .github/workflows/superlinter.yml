@@ -57,4 +57,4 @@ jobs:
               echo the 5000 port is listening
             fi
 
-          ps -ef | grep 'python3 main.py' | awk -F ' ' '{print $2}' | kill -9
+          ps -ef | grep 'python3 main.py' | awk '{print $2}' | kill -9
