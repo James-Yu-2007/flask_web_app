@@ -7,13 +7,59 @@ jobs:
     name: Lint code base
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v3
 
       - name: Run Super-Linter
         run: |
-          # secret
-          if [ "$SECRET_TEST" == "secret" ]
+          # run pipeline
+          ps
+
+          export DB_PATH=/home/runner/work/flask_web_app/flask_web_app/database/database.db
+          echo Finished exporting DB_PATH
+          echo $DB_PATH
+
+          export LOCAL_IP=${LOCAL_IP:-`ifconfig | sed -En 's/127.0.0.1//;s/.*inet (addr:)?(([0-9]*\.){3}[0-9]*).*/\2/p'`}
+          echo my ip is
+          echo $LOCAL_IP
+
+          if [ ! -d "database" ]
           then
-            echo Got Secret
+            mkdir database
+            if [ $? -ne 0 ]
+            then
+              echo "FATAL: database created unsuccessfully"
+              exit 1
+            fi
           fi
-        env:
-          SECRET_TEST: ${{ secrets.SECRET_TEST }}
+          yes | sudo apt install python3 && sudo apt install python3-pip && sudo pip3 install flask && sudo pip3 install flask-login && sudo pip3 install flask-sqlalchemy
+          if [ $? -ne 0 ]
+          then
+            echo "FATAL: packages downloaded unsuccessfully"
+            exit 2
+          fi
+
+          nohup python3 main.py > console.log &
+          if [ $? -ne 0 ]
+          then
+            echo FATAL: application runned unsuccessfully
+            exit 3
+          fi
+          echo SUCCESS
+          ls
+          pwd
+
+          sleep 1
+          echo check for listening
+          netstat -an | grep ".5000 "
+          if [ $? -eq 0 ]
+            then
+              echo the 5000 port is listening
+            fi
+
+          ps -ef
+          PID=`ps -ef | grep 'python3 main.py' | awk '{print $2}'`
+          echo $PID
+          runnerPID=`echo $PID | awk '{print $1}'`
+          kill -9 $runnerPID
+          ps -ef
