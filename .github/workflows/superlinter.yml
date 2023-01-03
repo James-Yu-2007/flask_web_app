@@ -57,7 +57,7 @@ jobs:
               echo the 5000 port is listening
             fi
 
-          PID=`ps -ef | grep 'python3 main.py' | grep runner | awk '{print $2}'`
+          PID=`ps -ef | grep 'python3 main.py' | awk '{print $2}'`
           echo $PID
-          echo `ps -ef | grep 'python3 main.py'`
-          kill -9 $PID
+          runnerPID=`awk '{print $1}' PID`
+          kill -9 $runnerPID
